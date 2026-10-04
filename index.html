@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMM Fisioterapia | Evaluación Deportiva, Fisioterapia y Recovery</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B1120',
+                            card: '#111827',
+                            cardBorder: '#1F2937',
+                            cyan: '#06B6D4',
+                            cyanHover: '#0891B2',
+                            blue: '#3B82F6',
+                            accent: '#22D3EE',
+                            text: '#F3F4F6',
+                            muted: '#9CA3AF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['"Teko"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B1120;
+            color: #F3F4F6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.3s ease;
+        }
+        .glass-panel-hover:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.15);
+        }
+
+        /* Glow effects */
+        .glow-cyan {
+            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.4);
+        }
+        .glow-text-cyan {
+            text-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B1120;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06B6D4;
+        }
+
+        /* Tech Mesh Background */
+        .tech-bg {
+            background-image: radial-gradient(rgba(6, 182, 212, 0.12) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        /* Range slider styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: #1F2937;
+            border-radius: 8px;
+            height: 8px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #06B6D4;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.8);
+        }
+    </style>
+</head>
+<body class="tech-bg selection:bg-brand-cyan selection:text-brand-dark">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-gray-800/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-cyan to-blue-600 flex items-center justify-center font-heading text-2xl font-bold text-slate-950 tracking-wider shadow-lg group-hover:scale-105 transition-transform">
+                    RMM
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading text-2xl font-bold tracking-wider leading-none text-white">
+                        RMM <span class="text-brand-cyan">FISIOTERAPIA</span>
+                    </span>
+                    <span class="text-[10px] text-brand-muted tracking-widest uppercase font-semibold">High Performance & Recovery</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Items -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#evaluacion" class="text-gray-300 hover:text-brand-cyan transition-colors">Evaluación</a>
+                <a href="#fisioterapia" class="text-gray-300 hover:text-brand-cyan transition-colors">Fisioterapia</a>
+                <a href="#recovery" class="text-gray-300 hover:text-brand-cyan transition-colors">Recovery</a>
+                <a href="#seguimiento" class="text-gray-300 hover:text-brand-cyan transition-colors">Seguimiento</a>
+                <a href="#deportes" class="text-gray-300 hover:text-brand-cyan transition-colors">Disciplinas</a>
+                <a href="#sobre-mi" class="text-gray-300 hover:text-brand-cyan transition-colors">Sobre Mí</a>
+            </nav>
+
+            <!-- CTA Header Button -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="#reserva" class="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-slate-950 bg-brand-cyan rounded-xl overflow-hidden transition-all duration-300 hover:bg-brand-cyanHover hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] group">
+                    <i data-lucide="calendar" class="w-4 h-4 mr-2"></i>
+                    <span>Agendar Cita</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-brand-cyan p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#evaluacion" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Evaluación</a>
+            <a href="#fisioterapia" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Fisioterapia</a>
+            <a href="#recovery" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Recovery</a>
+            <a href="#seguimiento" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Seguimiento</a>
+            <a href="#deportes" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Disciplinas</a>
+            <a href="#sobre-mi" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Sobre Mí</a>
+            <a href="#reserva" class="block py-3 text-center font-bold text-slate-950 bg-brand-cyan rounded-xl mt-4">Agendar por WhatsApp</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <!-- Background Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-cyan/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[350px] h-[350px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs font-semibold uppercase tracking-wider">
+                        <i data-lucide="activity" class="w-4 h-4"></i>
+                        <span>Centro de Fisioterapia & Valoración Funcional</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none uppercase font-heading">
+                        Evaluamos. Tratamos. <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-blue-400 to-indigo-400">Medimos tu recuperación.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-brand-muted font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        En <strong class="text-white font-semibold">RMM Fisioterapia</strong> dejamos atrás las sesiones pasivas e improvisadas. Utilizamos datos biomecánicos objetivos para detectar déficit de fuerza, asimetrías y acelerar tu retorno seguro al deporte.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#reserva" class="w-full sm:w-auto px-8 py-4 bg-brand-cyan text-slate-950 font-bold rounded-xl shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:bg-brand-cyanHover hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                            <span>Agendar Evaluación</span>
+                        </a>
+                        <a href="#simulador" class="w-full sm:w-auto px-8 py-4 glass-panel border-gray-700 hover:border-brand-cyan text-white font-semibold rounded-xl hover:bg-gray-800/50 transition-all flex items-center justify-center gap-3">
+                            <i data-lucide="bar-chart-2" class="w-5 h-5 text-brand-cyan"></i>
+                            <span>Ver Informe Interactivo</span>
+                        </a>
+                    </div>
+
+                    <!-- Key Indicators -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-gray-800/80 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-bold text-white font-heading tracking-wide">+100%</p>
+                            <p class="text-xs text-brand-muted">Datos Objetivos</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-bold text-brand-cyan font-heading tracking-wide">0%</p>
+                            <p class="text-xs text-brand-muted">Adivinanzas</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-bold text-white font-heading tracking-wide">Return to Play</p>
+                            <p class="text-xs text-brand-muted">Protocolo Seguro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Graphic Display -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Decorative Frame -->
+                        <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-brand-cyan to-blue-600 opacity-30 blur-lg"></div>
+                        
+                        <div class="relative glass-panel rounded-2xl p-6 border border-gray-800 space-y-6">
+                            <!-- Visual Header -->
+                            <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
+                                    <span class="text-xs font-mono text-gray-400">RMM_ANALYTICS_V2.6 // LIVE</span>
+                                </div>
+                                <span class="text-xs text-brand-cyan bg-brand-cyan/10 px-2 py-1 rounded font-mono">STATUS: OPTIMAL</span>
+                            </div>
+
+                            <!-- Live Radar Chart Simulation -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs font-semibold uppercase text-gray-400">Perfil Biomecánico del Atleta</span>
+                                    <span class="text-xs text-brand-cyan font-semibold">Score: 92/100</span>
+                                </div>
+                                <div class="h-56 relative flex items-center justify-center">
+                                    <canvas id="heroRadarChart"></canvas>
+                                </div>
+                            </div>
+
+                            <!-- Live Metric Tiles -->
+                            <div class="grid grid-cols-2 gap-3 pt-2">
+                                <div class="bg-gray-900/80 p-3 rounded-xl border border-gray-800">
+                                    <span class="text-[10px] uppercase text-gray-400 block">Dinamometría Isquios</span>
+                                    <span class="text-lg font-bold text-white font-heading">385 N <span class="text-xs text-green-400 font-sans">↑ 12%</span></span>
+                                </div>
+                                <div class="bg-gray-900/80 p-3 rounded-xl border border-gray-800">
+                                    <span class="text-[10px] uppercase text-gray-400 block">Asimetría L/R</span>
+                                    <span class="text-lg font-bold text-brand-cyan font-heading">3.2% <span class="text-xs text-green-400 font-sans">Ok (&lt;10%)</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO 1: EVALUACIÓN DEPORTIVA -->
+    <section id="evaluacion" class="py-20 relative border-t border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-cyan font-semibold text-sm uppercase tracking-widest">Módulo 01</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold uppercase font-heading tracking-wide">
+                    Evaluación Deportiva <span class="text-brand-cyan">de Alta Precisión</span>
+                </h2>
+                <p class="text-brand-muted">
+                    No asumimos lo que necesita tu cuerpo: lo medimos. Utilizamos tecnología biomecánica cuantitativa para identificar vulnerabilidades antes de que se conviertan en lesiones.
+                </p>
+            </div>
+
+            <!-- Grid de Tarjetas de Evaluación -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 1. Dinamometría -->
+                <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan mb-6">
+                            <i data-lucide="gauge" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Dinamometría Digital</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            Medición pico de fuerza isométrica e excéntrica. Cuantificamos exactamente cuántos Newtons genera cada grupo muscular.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between text-xs text-brand-cyan font-semibold">
+                        <span>Fuerza Máxima Real</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- 2. Salto / CMJ -->
+                <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Plataformas de Salto (CMJ)</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            Evaluación de potencia neuromuscular, altura de salto, tiempo de contacto y tasa de desarrollo de fuerza (RRF).
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between text-xs text-blue-400 font-semibold">
+                        <span>Potencia y Reactividad</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- 3. Asimetrías -->
+                <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-6">
+                            <i data-lucide="git-compare" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Análisis de Asimetrías</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            Detección de desequilibrios entre la pierna/brazo izquierdo y derecho. Reducción directa del riesgo lesional.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between text-xs text-indigo-400 font-semibold">
+                        <span>Balance Izquierda / Derecha</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- 4. Fuerza Relativa -->
+                <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6">
+                            <i data-lucide="scale" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Fuerza Relativa al Peso</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            Relación entre la fuerza absoluta producida y la masa corporal. Clave para velocistas, saltadores y deportes de impacto.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between text-xs text-cyan-400 font-semibold">
+                        <span>Ratio N/kg</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- 5. Movilidad / Estabilidad -->
+                <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
+                            <i data-lucide="move" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Movilidad y Control Motor</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            Screening de rangos articulares (Dorsiflexión, Cadera, Hombro) y estabilidad dinámica bajo carga.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between text-xs text-emerald-400 font-semibold">
+                        <span>Calidad de Movimiento</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- 6. Informe Digital -->
+                <div class="glass-panel p-6 rounded-2xl glass-panel-hover flex flex-col justify-between bg-gradient-to-br from-brand-card to-gray-900 border-brand-cyan/40">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan flex items-center justify-center text-slate-950 mb-6 font-bold">
+                            <i data-lucide="file-text" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Informe de Resultados RMM</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            Recibís un reporte digital claro con semáforos de riesgo, gráficos comparativos y directrices claras para tu plan.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between text-xs text-brand-cyan font-semibold">
+                        <span>Entregable 100% Digital</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SIMULADOR INTERACTIVO DE INFORME -->
+    <section id="simulador" class="py-20 bg-gray-950/60 border-t border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                <span class="text-brand-cyan font-semibold text-sm uppercase tracking-widest">Experiencia Interactiva</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold uppercase font-heading">
+                    Simulá tu Informe de <span class="text-brand-cyan">Evaluación</span>
+                </h2>
+                <p class="text-brand-muted text-sm sm:text-base">
+                    Mové los controles deslizantes para simular tus valores de fuerza y observar cómo el sistema de RMM Fisioterapia analiza tus asimetrías y estado de preparación.
+                </p>
+            </div>
+
+            <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-gray-800 grid lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Controls -->
+                <div class="lg:col-span-5 space-y-6">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2 border-b border-gray-800 pb-3">
+                        <i data-lucide="sliders" class="w-5 h-5 text-brand-cyan"></i>
+                        <span>Parámetros de Medición</span>
+                    </h3>
+
+                    <!-- Slider 1 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <label class="text-gray-300 font-medium">Fuerza Pierna Izquierda (N)</label>
+                            <span id="val-left" class="font-mono text-brand-cyan font-bold">320 N</span>
+                        </div>
+                        <input type="range" id="slider-left" min="150" max="500" value="320" class="w-full">
+                    </div>
+
+                    <!-- Slider 2 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <label class="text-gray-300 font-medium">Fuerza Pierna Derecha (N)</label>
+                            <span id="val-right" class="font-mono text-brand-cyan font-bold">350 N</span>
+                        </div>
+                        <input type="range" id="slider-right" min="150" max="500" value="350" class="w-full">
+                    </div>
+
+                    <!-- Slider 3 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <label class="text-gray-300 font-medium">Salto Vertical CMJ (cm)</label>
+                            <span id="val-cmj" class="font-mono text-brand-cyan font-bold">38 cm</span>
+                        </div>
+                        <input type="range" id="slider-cmj" min="15" max="65" value="38" class="w-full">
+                    </div>
+
+                    <div class="bg-gray-900/90 p-4 rounded-xl border border-gray-800 text-xs text-brand-muted space-y-1">
+                        <p class="text-white font-semibold flex items-center gap-1.5">
+                            <i data-lucide="info" class="w-4 h-4 text-brand-cyan"></i> Criterio Clínico RMM:
+                        </p>
+                        <p>Una asimetría &gt; 10% entre miembros incrementa sensiblemente el riesgo de lesión muscular o ligamentosa en gestos de alta intensidad.</p>
+                    </div>
+                </div>
+
+                <!-- Output Dashboard -->
+                <div class="lg:col-span-7 bg-gray-900/90 p-6 rounded-2xl border border-gray-800 space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-800 pb-4">
+                        <div>
+                            <span class="text-xs text-brand-muted uppercase tracking-wider block">Vista Previa de Informe</span>
+                            <h4 class="text-xl font-bold text-white font-heading tracking-wide">ATLETA: EVALUACIÓN INICIAL</h4>
+                        </div>
+                        <div id="status-badge" class="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-green-500/20 text-green-400 border border-green-500/30">
+                            Riesgo Bajo (Asimetría &lt; 10%)
+                        </div>
+                    </div>
+
+                    <!-- Bar Chart Display -->
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-400">Pierna Izquierda</span>
+                                <span id="bar-left-text" class="text-white font-mono">320 N</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-4 rounded-full overflow-hidden">
+                                <div id="bar-left" class="bg-brand-cyan h-full transition-all duration-300" style="width: 64%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span class="text-gray-400">Pierna Derecha</span>
+                                <span id="bar-right-text" class="text-white font-mono">350 N</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-4 rounded-full overflow-hidden">
+                                <div id="bar-right" class="bg-blue-500 h-full transition-all duration-300" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Computed Indicators -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                        <div class="bg-gray-950 p-3 rounded-xl border border-gray-800 text-center">
+                            <span class="text-[10px] text-brand-muted uppercase block">Asimetría Calculada</span>
+                            <span id="res-asymmetry" class="text-xl font-bold font-heading text-brand-cyan">8.5%</span>
+                        </div>
+                        <div class="bg-gray-950 p-3 rounded-xl border border-gray-800 text-center">
+                            <span class="text-[10px] text-brand-muted uppercase block">Diferencia N</span>
+                            <span id="res-diff" class="text-xl font-bold font-heading text-white">30 N</span>
+                        </div>
+                        <div class="col-span-2 sm:col-span-1 bg-gray-950 p-3 rounded-xl border border-gray-800 text-center">
+                            <span class="text-[10px] text-brand-muted uppercase block">Índice Reactivo</span>
+                            <span id="res-reactive" class="text-xl font-bold font-heading text-indigo-400">Moderado</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="#reserva" class="block w-full py-3 text-center text-xs font-bold uppercase tracking-wider bg-brand-cyan/10 hover:bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/30 rounded-xl transition-all">
+                            Quiero mi evaluación real completa
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO 2: FISIOTERAPIA -->
+    <section id="fisioterapia" class="py-20 border-t border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Info Section -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-brand-cyan font-semibold text-sm uppercase tracking-widest">Módulo 02</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold uppercase font-heading leading-none">
+                        Fisioterapia basada en <span class="text-brand-cyan">Carga y Evidencia</span>
+                    </h2>
+                    <p class="text-brand-muted leading-relaxed">
+                        En RMM Fisioterapia no dependemos de camillas térmicas ni masajes pasivos indefinidos. Entendemos que el tejido se repara y fortalece respondiendo al estímulo de carga progresiva controlada.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex gap-4 p-4 rounded-xl glass-panel border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-brand-cyan/10 text-brand-cyan flex items-center justify-center shrink-0">
+                                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Tratamiento Activo</h4>
+                                <p class="text-xs text-brand-muted">El atleta es protagonista. Diseñamos dosis exactas de ejercicio terapéutico.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 p-4 rounded-xl glass-panel border-gray-800">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="trending-up" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Criterios de Criterio vs Tiempo</h4>
+                                <p class="text-xs text-brand-muted">Avanzas de fase cuando alcanzas los kg o Newtons requeridos, no solo por cumplir semanas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialties Grid -->
+                <div class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+                    
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center">
+                            <i data-lucide="activity" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Lesiones Musculares</h3>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Desgarros, distensiones en isquiotibiales, cuádriceps y gemelos. Readaptación con dinamometría para evitar recidivas.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center">
+                            <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Tendinopatías</h3>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Manejo de tendón rotuliano, Aquiles, manguito rotador y epicondilitis. Protocolos Isométricos, Pesados y Pliométricos.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                            <i data-lucide="crosshair" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Postoperatorios</h3>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Rehabilitación especializada de Ligamento Cruzado Anterior (LCA), meniscos, labrum y cirugías articulares.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl glass-panel-hover space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-brand-cyan/10 text-brand-cyan flex items-center justify-center">
+                            <i data-lucide="flag" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Return to Sport</h3>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Fase final en campo/gimnasio con gestos deportivos reales, aceleraciones, desaceleraciones y saltos.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO 3: RECOVERY -->
+    <section id="recovery" class="py-20 bg-gray-950/60 border-t border-gray-800/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-cyan font-semibold text-sm uppercase tracking-widest">Módulo 03</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold uppercase font-heading">
+                    Centro de <span class="text-brand-cyan">Recovery Avanzado</span>
+                </h2>
+                <p class="text-brand-muted">
+                    Optimizá la regeneración tisular y acelerá la eliminación de la fatiga muscular acumulada entre entrenamientos exigentes o competencias.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Recovery Card 1 -->
+                <div class="glass-panel p-8 rounded-2xl glass-panel-hover flex flex-col justify-between border-t-4 border-t-brand-cyan">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center">
+                            <i data-lucide="wind" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold font-heading uppercase text-white tracking-wide">Compresión Neumática</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            Botas de presoterapia secuencial que estimulan el drenaje linfático, reducen el edema y aceleran el retorno venoso reduciendo la sensación de piernas pesadas.
+                        </p>
+                    </div>
+                    <ul class="mt-6 space-y-2 text-xs text-gray-300 border-t border-gray-800 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Eliminación de metabolitos</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-cyan"></i> Reducción de DOMS (agujetas)</li>
+                    </ul>
+                </div>
+
+                <!-- Recovery Card 2 -->
+                <div class="glass-panel p-8 rounded-2xl glass-panel-hover flex flex-col justify-between border-t-4 border-t-blue-500">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center">
+                            <i data-lucide="sun" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold font-heading uppercase text-white tracking-wide">Fotobiomodulación</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            Terapia con luz roja e infrarroja cercana que estimula la función mitocondrial a nivel celular, acelerando la reparación celular y reduciendo la inflamación profunda.
+                        </p>
+                    </div>
+                    <ul class="mt-6 space-y-2 text-xs text-gray-300 border-t border-gray-800 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-400"></i> Regeneración de ATP mitocondrial</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-400"></i> Modulación antiinflamatoria</li>
+                    </ul>
+                </div>
+
+                <!-- Recovery Card 3 -->
+                <div class="glass-panel p-8 rounded-2xl glass-panel-hover flex flex-col justify-between border-t-4 border-t-indigo-500">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                            <i data-lucide="battery-charging" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold font-heading uppercase text-white tracking-wide">Post-Competencia</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed">
+                            Protocolos combinados expresamente estructurados para carreras de marathon, torneos de fin de semana, partidos intensos o semanas de alta carga de entrenamiento.
+                        </p>
+                    </div>
+                    <ul class="mt-6 space-y-2 text-xs text-gray-300 border-t border-gray-800 pt-4">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-indigo-400"></i> Recuperación del SN Central</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-indigo-400"></i> Listos para la siguiente sesión</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO 4: SEGUIMIENTO Y EVOLUCIÓN -->
+    <section id="seguimiento" class="py-20 border-t border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brand-cyan font-semibold text-sm uppercase tracking-widest">Módulo 04</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold uppercase font-heading leading-tight">
+                        Evolución Continua y <span class="text-brand-cyan">Reevaluaciones</span>
+                    </h2>
+                    <p class="text-brand-muted leading-relaxed">
+                        Lo que no se mide, no se puede mejorar. En RMM Fisioterapia realizamos reevaluaciones periódicas en momentos clave del tratamiento para garantizar que cada intervención está generando las adaptaciones deseadas.
+                    </p>
+
+                    <!-- Steps list -->
+                    <div class="space-y-6 pt-4">
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-full bg-brand-cyan text-slate-950 font-bold flex items-center justify-center shrink-0">1</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Evaluación Baseline (Día 1)</h4>
+                                <p class="text-xs text-brand-muted">Obtención del perfil biomecánico inicial, niveles de fuerza y mapa de déficit muscular.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-full bg-gray-800 text-brand-cyan font-bold flex items-center justify-center shrink-0 border border-brand-cyan/40">2</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Intervención Objetiva</h4>
+                                <p class="text-xs text-brand-muted">Programa de ejercicio y tratamiento ajustado a los Newtons exactos de tu estado actual.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-full bg-gray-800 text-brand-cyan font-bold flex items-center justify-center shrink-0 border border-brand-cyan/40">3</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Reevaluación de Control</h4>
+                                <p class="text-xs text-brand-muted">Medición comparativa. Confirmación objetiva del incremento de fuerza y equiparación de miembros.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Evolution Graph Card -->
+                <div class="lg:col-span-6">
+                    <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-gray-800 space-y-6">
+                        <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                            <div>
+                                <h3 class="font-bold text-white text-lg">Curva de Evolución del Atleta</h3>
+                                <p class="text-xs text-brand-muted">Progresión real de Fuerza Isométrica Isquiotibial</p>
+                            </div>
+                            <span class="px-3 py-1 bg-brand-cyan/10 text-brand-cyan text-xs font-mono font-bold rounded-full">
+                                +34% Fuerza
+                            </span>
+                        </div>
+
+                        <div class="h-64 relative">
+                            <canvas id="evolutionLineChart"></canvas>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-3 pt-2 text-center text-xs">
+                            <div class="p-2 rounded-lg bg-gray-900/60 border border-gray-800">
+                                <span class="text-gray-400 block text-[10px]">Semana 1</span>
+                                <span class="font-bold text-red-400">220 N</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-gray-900/60 border border-gray-800">
+                                <span class="text-gray-400 block text-[10px]">Semana 4</span>
+                                <span class="font-bold text-amber-400">265 N</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-gray-900/60 border border-gray-800">
+                                <span class="text-gray-400 block text-[10px]">Semana 8</span>
+                                <span class="font-bold text-green-400">295 N</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO 5: DISCIPLINAS Y DEPORTES -->
+    <section id="deportes" class="py-20 bg-gray-950/60 border-t border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-cyan font-semibold text-sm uppercase tracking-widest">Módulo 05</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold uppercase font-heading">
+                    Especializados en tu <span class="text-brand-cyan">Disciplina</span>
+                </h2>
+                <p class="text-brand-muted">
+                    Ya seas atleta profesional o deportista amador exigente, adaptamos nuestras evaluaciones a los patrones biomecánicos específicos de tu deporte.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                
+                <!-- Football -->
+                <div class="glass-panel p-5 rounded-2xl text-center glass-panel-hover space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 text-brand-cyan mx-auto flex items-center justify-center">
+                        <i data-lucide="trophy" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Fútbol</h3>
+                    <p class="text-[11px] text-brand-muted">Prevención de pubalgia, aductores y LCA.</p>
+                </div>
+
+                <!-- Running -->
+                <div class="glass-panel p-5 rounded-2xl text-center glass-panel-hover space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 mx-auto flex items-center justify-center">
+                        <i data-lucide="footprints" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Running</h3>
+                    <p class="text-[11px] text-brand-muted">Economía de carrera, fascitis y Aquiles.</p>
+                </div>
+
+                <!-- CrossFit -->
+                <div class="glass-panel p-5 rounded-2xl text-center glass-panel-hover space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 mx-auto flex items-center justify-center">
+                        <i data-lucide="dumbbell" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">CrossFit</h3>
+                    <p class="text-[11px] text-brand-muted">Salud de hombro, lumbar y carga pesada.</p>
+                </div>
+
+                <!-- Pádel / Tenis -->
+                <div class="glass-panel p-5 rounded-2xl text-center glass-panel-hover space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 mx-auto flex items-center justify-center">
+                        <i data-lucide="circle-dot" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Pádel & Tenis</h3>
+                    <p class="text-[11px] text-brand-muted">Codo de tenista, manguito rotador y cambio de dirección.</p>
+                </div>
+
+                <!-- Gym / Fuerza -->
+                <div class="glass-panel p-5 rounded-2xl text-center glass-panel-hover space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 mx-auto flex items-center justify-center">
+                        <i data-lucide="activity" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Gimnasio</h3>
+                    <p class="text-[11px] text-brand-muted">Optimización de levantamientos e hipertrofia segura.</p>
+                </div>
+
+                <!-- Amateurs & Pros -->
+                <div class="glass-panel p-5 rounded-2xl text-center glass-panel-hover space-y-3 border-brand-cyan/40">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-cyan to-blue-600 text-slate-950 mx-auto flex items-center justify-center font-bold">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Amateurs & Pros</h3>
+                    <p class="text-[11px] text-brand-muted">Mismo estándar de evaluación profesional.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO 6: SOBRE MÍ / EL CONSULTORIO -->
+    <section id="sobre-mi" class="py-20 border-t border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-gray-800 grid lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-gray-900 border border-gray-800 flex items-center justify-center group">
+                        <!-- Placeholder Badge for Specialist Photo -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
+                        <div class="text-center p-6 z-20 space-y-2">
+                            <div class="w-20 h-20 rounded-full bg-brand-cyan/20 border-2 border-brand-cyan text-brand-cyan mx-auto flex items-center justify-center mb-4">
+                                <i data-lucide="user-check" class="w-10 h-10"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold font-heading text-white">RMM FISIOTERAPIA</h4>
+                            <p class="text-xs text-brand-cyan uppercase tracking-wider font-semibold">Evaluación & Performance</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-brand-cyan font-semibold text-sm uppercase tracking-widest">Módulo 06</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold uppercase font-heading leading-tight">
+                        Filosofía RMM: <br>
+                        <span class="text-brand-cyan">Ciencia APLICADA Al Deporte</span>
+                    </h2>
+                    <p class="text-brand-muted leading-relaxed">
+                        En **RMM Fisioterapia** nuestra misión es elevar el estándar de la fisioterapia y la preparación física. Combinamos la evidencia científica más reciente con tecnología de valoración cuantitativa para dar respuestas claras y soluciones eficientes a deportistas de todos los niveles.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                        <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800">
+                            <h4 class="text-white font-bold mb-1 text-sm flex items-center gap-2">
+                                <i data-lucide="target" class="w-4 h-4 text-brand-cyan"></i> Enfoque Individualizado
+                            </h4>
+                            <p class="text-xs text-brand-muted">Sin recetas genéricas. Cada cuerpo tiene métricas y demandas únicas.</p>
+                        </div>
+
+                        <div class="bg-gray-900/80 p-4 rounded-xl border border-gray-800">
+                            <h4 class="text-white font-bold mb-1 text-sm flex items-center gap-2">
+                                <i data-lucide="cpu" class="w-4 h-4 text-brand-cyan"></i> Tecnología Integrada
+                            </h4>
+                            <p class="text-xs text-brand-muted">Dinamómetros, encoders y presoterapia al servicio de tu evolución.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN FINAL: RESERVA Y UBICACIÓN -->
+    <section id="reserva" class="py-20 bg-gray-950/80 border-t border-gray-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-cyan font-semibold text-sm uppercase tracking-widest">Contacto Directo</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold uppercase font-heading">
+                    Agendá tu <span class="text-brand-cyan">Sesión o Evaluación</span>
+                </h2>
+                <p class="text-brand-muted">
+                    Completá tus datos para enviarnos una solicitud directa a WhatsApp. Te responderemos para coordinar tu turno a la brevedad.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <!-- Formulario Frontend -->
+                <div class="lg:col-span-7 glass-panel p-8 rounded-3xl border border-gray-800">
+                    <form id="booking-form" class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Nombre Completo *</label>
+                                <input type="text" id="form-name" required placeholder="Ej. Juan Pérez" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Teléfono / WhatsApp *</label>
+                                <input type="tel" id="form-phone" required placeholder="Ej. +598 099 123 456" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Servicio Principal *</label>
+                                <select id="form-service" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+                                    <option value="Evaluación Biomecánica Completa">Evaluación Biomecánica Completa</option>
+                                    <option value="Fisioterapia / Readaptación">Fisioterapia / Readaptación de Lesión</option>
+                                    <option value="Sesión de Recovery (Botas/Luz Roja)">Sesión de Recovery</option>
+                                    <option value="Evaluación + Recovery Combo">Combo Evaluación + Recovery</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Deporte / Disciplina</label>
+                                <input type="text" id="form-sport" placeholder="Ej. Running, Fútbol, CrossFit" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Motivo de consulta o detalles adicionales</label>
+                            <textarea id="form-notes" rows="4" placeholder="Describí brevemente tu lesión, dolor actual o si buscas evaluación de rendimiento..." class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-brand-cyan text-slate-950 font-bold rounded-xl shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:bg-brand-cyanHover transition-all flex items-center justify-center gap-2 text-base uppercase tracking-wider">
+                            <i data-lucide="message-square" class="w-5 h-5"></i>
+                            <span>Enviar Solicitud por WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Información de Ubicación y Horarios -->
+                <div class="lg:col-span-5 space-y-6 flex flex-col justify-between">
+                    
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-800 space-y-6">
+                        <h3 class="text-xl font-bold font-heading uppercase text-white border-b border-gray-800 pb-3">
+                            Información del Consultorio
+                        </h3>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Ubicación</h4>
+                                    <p class="text-xs text-brand-muted">Consultorio RMM Fisioterapia<br>Montevideo, Uruguay</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="clock" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Horarios de Atención</h4>
+                                    <p class="text-xs text-brand-muted">Lunes a Viernes: 08:00 - 20:00 hs<br>Sábados: 09:00 - 13:00 hs (Con agenda previa)</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="phone" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-sm">Atención Directa</h4>
+                                    <p class="text-xs text-brand-muted">WhatsApp direct para turnos y consultas rápidas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct WhatsApp Banner Card -->
+                    <a href="https://wa.me/59800000000?text=Hola%20RMM%20Fisioterapia,%20quisiera%20consultar%20por%20turnos" target="_blank" class="p-6 rounded-3xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white flex items-center justify-between hover:opacity-95 transition-all shadow-lg group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-white">
+                                <i data-lucide="message-circle" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base">¿Tenés dudas previas?</h4>
+                                <p class="text-xs text-emerald-100">Escribinos directamente al WhatsApp de RMM</p>
+                            </div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-6 h-6 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-slate-950 border-t border-gray-800 text-center text-xs text-brand-muted">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-brand-cyan flex items-center justify-center text-slate-950 font-bold font-heading text-xs">
+                    RMM
+                </div>
+                <span class="font-bold text-white font-heading tracking-wide">RMM FISIOTERAPIA</span>
+            </div>
+            <p>&copy; 2026 RMM Fisioterapia. Todos los derechos reservados. Evaluación Deportiva, Fisioterapia y Recovery.</p>
+            <div class="flex gap-4">
+                <a href="#evaluacion" class="hover:text-brand-cyan transition-colors">Evaluación</a>
+                <a href="#fisioterapia" class="hover:text-brand-cyan transition-colors">Fisioterapia</a>
+                <a href="#recovery" class="hover:text-brand-cyan transition-colors">Recovery</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Radar Chart Simulation for Hero
+        function renderHeroRadar() {
+            const canvas = document.getElementById('heroRadarChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size for DPI scaling
+            canvas.width = 240;
+            canvas.height = 220;
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = 80;
+            const sides = 5;
+            const labels = ['Fuerza', 'Potencia', 'Simetría', 'Movilidad', 'Estabilidad'];
+            const values = [0.9, 0.85, 0.95, 0.8, 0.88]; // Percentages
+
+            // Draw radar web grid
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 1;
+            
+            for (let level = 1; level <= 4; level++) {
+                const r = (radius / 4) * level;
+                ctx.beginPath();
+                for (let i = 0; i < sides; i++) {
+                    const angle = (Math.PI * 2 / sides) * i - Math.PI / 2;
+                    const x = centerX + r * Math.cos(angle);
+                    const y = centerY + r * Math.sin(angle);
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.closePath();
+                ctx.stroke();
+            }
+
+            // Draw Radar Axes
+            for (let i = 0; i < sides; i++) {
+                const angle = (Math.PI * 2 / sides) * i - Math.PI / 2;
+                const x = centerX + radius * Math.cos(angle);
+                const y = centerY + radius * Math.sin(angle);
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+
+                // Draw Labels
+                ctx.fillStyle = '#9CA3AF';
+                ctx.font = '10px "Plus Jakarta Sans"';
+                ctx.textAlign = 'center';
+                const labelX = centerX + (radius + 18) * Math.cos(angle);
+                const labelY = centerY + (radius + 14) * Math.sin(angle);
+                ctx.fillText(labels[i], labelX, labelY + 3);
+            }
+
+            // Draw Athlete Polygon Data
+            ctx.beginPath();
+            for (let i = 0; i < sides; i++) {
+                const angle = (Math.PI * 2 / sides) * i - Math.PI / 2;
+                const r = radius * values[i];
+                const x = centerX + r * Math.cos(angle);
+                const y = centerY + r * Math.sin(angle);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.fillStyle = 'rgba(6, 182, 212, 0.35)';
+            ctx.fill();
+            ctx.strokeStyle = '#06B6D4';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Draw Points
+            for (let i = 0; i < sides; i++) {
+                const angle = (Math.PI * 2 / sides) * i - Math.PI / 2;
+                const r = radius * values[i];
+                const x = centerX + r * Math.cos(angle);
+                const y = centerY + r * Math.sin(angle);
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, Math.PI * 2);
+                ctx.fillStyle = '#22D3EE';
+                ctx.fill();
+            }
+        }
+
+        // Interactive Simulator Logic
+        const sliderLeft = document.getElementById('slider-left');
+        const sliderRight = document.getElementById('slider-right');
+        const sliderCmj = document.getElementById('slider-cmj');
+
+        const valLeft = document.getElementById('val-left');
+        const valRight = document.getElementById('val-right');
+        const valCmj = document.getElementById('val-cmj');
+
+        const barLeft = document.getElementById('bar-left');
+        const barRight = document.getElementById('bar-right');
+        const barLeftText = document.getElementById('bar-left-text');
+        const barRightText = document.getElementById('bar-right-text');
+
+        const resAsymmetry = document.getElementById('res-asymmetry');
+        const resDiff = document.getElementById('res-diff');
+        const resReactive = document.getElementById('res-reactive');
+        const statusBadge = document.getElementById('status-badge');
+
+        function updateSimulator() {
+            const leftN = parseInt(sliderLeft.value);
+            const rightN = parseInt(sliderRight.value);
+            const cmjVal = parseInt(sliderCmj.value);
+
+            // Update Label texts
+            valLeft.textContent = `${leftN} N`;
+            valRight.textContent = `${rightN} N`;
+            valCmj.textContent = `${cmjVal} cm`;
+
+            barLeftText.textContent = `${leftN} N`;
+            barRightText.textContent = `${rightN} N`;
+
+            // Calculate percentage relative to max slider 500
+            barLeft.style.width = `${(leftN / 500) * 100}%`;
+            barRight.style.width = `${(rightN / 500) * 100}%`;
+
+            // Calculate Asymmetry
+            const diff = Math.abs(leftN - rightN);
+            const maxVal = Math.max(leftN, rightN);
+            const asymmetryPct = ((diff / maxVal) * 100).toFixed(1);
+
+            resAsymmetry.textContent = `${asymmetryPct}%`;
+            resDiff.textContent = `${diff} N`;
+
+            // Reactive Index calculation based on CMJ
+            if (cmjVal > 45) {
+                resReactive.textContent = 'Excelente';
+                resReactive.className = 'text-xl font-bold font-heading text-green-400';
+            } else if (cmjVal >= 32) {
+                resReactive.textContent = 'Moderado';
+                resReactive.className = 'text-xl font-bold font-heading text-brand-cyan';
+            } else {
+                resReactive.textContent = 'Bajo';
+                resReactive.className = 'text-xl font-bold font-heading text-amber-400';
+            }
+
+            // Update Status Badge
+            if (asymmetryPct > 15) {
+                statusBadge.textContent = `Riesgo Alto (Asimetría ${asymmetryPct}%)`;
+                statusBadge.className = 'self-start sm:self-auto px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-red-500/20 text-red-400 border border-red-500/30';
+            } else if (asymmetryPct >= 10) {
+                statusBadge.textContent = `Riesgo Moderado (Asimetría ${asymmetryPct}%)`;
+                statusBadge.className = 'self-start sm:self-auto px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/30';
+            } else {
+                statusBadge.textContent = `Riesgo Bajo (Asimetría ${asymmetryPct}%)`;
+                statusBadge.className = 'self-start sm:self-auto px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-green-500/20 text-green-400 border border-green-500/30';
+            }
+        }
+
+        if (sliderLeft && sliderRight && sliderCmj) {
+            sliderLeft.addEventListener('input', updateSimulator);
+            sliderRight.addEventListener('input', updateSimulator);
+            sliderCmj.addEventListener('input', updateSimulator);
+        }
+
+        // Render Evolution Line Chart on Canvas
+        function renderEvolutionChart() {
+            const canvas = document.getElementById('evolutionLineChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = 500;
+            canvas.height = 240;
+
+            const points = [
+                { x: 50, y: 190, label: 'Sem 1', val: '220N' },
+                { x: 180, y: 130, label: 'Sem 4', val: '265N' },
+                { x: 320, y: 90, label: 'Sem 6', val: '280N' },
+                { x: 450, y: 50, label: 'Sem 8', val: '295N' }
+            ];
+
+            // Draw Grid Lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 1;
+            for (let y = 40; y <= 200; y += 40) {
+                ctx.beginPath();
+                ctx.moveTo(30, y);
+                ctx.lineTo(470, y);
+                ctx.stroke();
+            }
+
+            // Gradient area fill
+            const gradient = ctx.createLinearGradient(0, 0, 0, 240);
+            gradient.addColorStop(0, 'rgba(6, 182, 212, 0.4)');
+            gradient.addColorStop(1, 'rgba(6, 182, 212, 0.0)');
+
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            for (let i = 1; i < points.length; i++) {
+                ctx.lineTo(points[i].x, points[i].y);
+            }
+            ctx.lineTo(points[points.length - 1].x, 220);
+            ctx.lineTo(points[0].x, 220);
+            ctx.closePath();
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Line Stroke
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            for (let i = 1; i < points.length; i++) {
+                ctx.lineTo(points[i].x, points[i].y);
+            }
+            ctx.strokeStyle = '#06B6D4';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            // Draw Points and Values
+            points.forEach(pt => {
+                ctx.beginPath();
+                ctx.arc(pt.x, pt.y, 6, 0, Math.PI * 2);
+                ctx.fillStyle = '#0B1120';
+                ctx.fill();
+                ctx.strokeStyle = '#22D3EE';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                // Text
+                ctx.fillStyle = '#FFFFFF';
+                ctx.font = 'bold 11px "Plus Jakarta Sans"';
+                ctx.textAlign = 'center';
+                ctx.fillText(pt.val, pt.x, pt.y - 12);
+            });
+        }
+
+        // WhatsApp Form Submission Handler
+        const bookingForm = document.getElementById('booking-form');
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('form-name').value;
+            const phone = document.getElementById('form-phone').value;
+            const service = document.getElementById('form-service').value;
+            const sport = document.getElementById('form-sport').value || 'No especificado';
+            const notes = document.getElementById('form-notes').value || 'Sin detalles adicionales';
+
+            const message = `Hola RMM Fisioterapia! Quisiera agendar un turno.%0A%0A` +
+                `*Nombre:* ${encodeURIComponent(name)}%0A` +
+                `*Teléfono:* ${encodeURIComponent(phone)}%0A` +
+                `*Servicio:* ${encodeURIComponent(service)}%0A` +
+                `*Deporte:* ${encodeURIComponent(sport)}%0A` +
+                `*Notas/Motivo:* ${encodeURIComponent(notes)}`;
+
+            // Direct WhatsApp redirect (Reemplazar número según corresponda)
+            const whatsappUrl = `https://wa.me/59800000000?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Initialize Canvas Graphics on Load
+        window.addEventListener('load', () => {
+            renderHeroRadar();
+            renderEvolutionChart();
+            updateSimulator();
+        });
+    </script>
+</body>
+</html>
