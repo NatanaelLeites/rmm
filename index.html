@@ -128,12 +128,13 @@
             </a>
 
             <!-- Desktop Nav Items -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#caminos" class="text-gray-300 hover:text-brand-cyan transition-colors">¿Qué buscás?</a>
-                <a href="#evaluaciones" class="text-gray-300 hover:text-brand-cyan transition-colors">Evaluaciones</a>
-                <a href="#simulador" class="text-gray-300 hover:text-brand-cyan transition-colors">Simulador</a>
-                <a href="#seccion-publicos" class="text-gray-300 hover:text-brand-cyan transition-colors">Servicios</a>
-                <a href="#sobre-mi" class="text-gray-300 hover:text-brand-cyan transition-colors">Sobre Mí</a>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#evaluaciones" class="text-gray-300 hover:text-brand-cyan transition-colors">Evaluación</a>
+                <a href="#seccion-publicos" onclick="switchTab('paciente')" class="text-gray-300 hover:text-brand-cyan transition-colors">Fisioterapia</a>
+                <a href="#seccion-publicos" onclick="switchTab('entrenar')" class="text-gray-300 hover:text-brand-cyan transition-colors">Entrenamiento personalizado</a>
+                <a href="#seccion-publicos" onclick="switchTab('deportista')" class="text-gray-300 hover:text-brand-cyan transition-colors">Recovery</a>
+                <a href="#simulador" class="text-gray-300 hover:text-brand-cyan transition-colors">Seguimiento</a>
+                <a href="#sobre-mi" class="text-gray-300 hover:text-brand-cyan transition-colors">Sobre mí</a>
             </nav>
 
             <div class="hidden sm:flex items-center gap-4">
@@ -149,11 +150,12 @@
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
-            <a href="#caminos" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">¿Qué buscás?</a>
-            <a href="#evaluaciones" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Evaluaciones</a>
-            <a href="#simulador" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Simulador</a>
-            <a href="#seccion-publicos" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Servicios</a>
-            <a href="#sobre-mi" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Sobre Mí</a>
+            <a href="#evaluaciones" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Evaluación</a>
+            <a href="#seccion-publicos" onclick="switchTab('paciente')" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Fisioterapia</a>
+            <a href="#seccion-publicos" onclick="switchTab('entrenar')" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Entrenamiento personalizado</a>
+            <a href="#seccion-publicos" onclick="switchTab('deportista')" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Recovery</a>
+            <a href="#simulador" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Seguimiento</a>
+            <a href="#sobre-mi" class="block py-2 text-gray-300 hover:text-brand-cyan border-b border-gray-800">Sobre mí</a>
             <a href="#reserva" class="block py-3 text-center font-bold text-slate-950 bg-brand-cyan rounded-xl mt-4">Agendar por WhatsApp</a>
         </div>
     </header>
@@ -165,7 +167,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs font-semibold uppercase tracking-wider mb-6">
                 <i data-lucide="activity" class="w-4 h-4"></i>
-                <span>Fisioterapia Basada en Datos & Rendimiento</span>
+                <span>Evaluamos, tratamos, entrenamos, medimos tu evolución</span>
             </div>
 
             <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none uppercase font-heading max-w-4xl mx-auto">
@@ -177,15 +179,15 @@
                 En RMM adaptamos la fisioterapia, la evaluación basada en datos y el recovery a cada necesidad. Sin improvisaciones ni recetas genéricas.
             </p>
 
-            <!-- SELECTOR DE CAMINOS (TRIAJE DE USUARIO) -->
-            <div id="caminos" class="grid md:grid-cols-3 gap-6 mt-12 max-w-5xl mx-auto text-left">
+            <!-- SELECTOR DE CAMINOS (TRIAJE DE USUARIO - 4 PILARES) -->
+            <div id="caminos" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 max-w-6xl mx-auto text-left">
                 <!-- PACIENTE -->
                 <div onclick="switchTab('paciente')" class="glass-panel p-6 rounded-2xl border border-gray-800 hover:border-brand-cyan cursor-pointer transition-all group hover:-translate-y-1 shadow-lg">
                     <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <i data-lucide="heart-pulse" class="w-6 h-6"></i>
                     </div>
                     <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest block mb-1">Recuperar</span>
-                    <h3 class="text-2xl font-bold font-heading text-white uppercase">Soy Paciente</h3>
+                    <h3 class="text-xl font-bold font-heading text-white uppercase">Soy Paciente</h3>
                     <p class="text-xs text-brand-muted mt-2 leading-relaxed">Fisioterapia y rehabilitación para superar dolores, lesiones o cirugías y volver a moverte.</p>
                     <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-emerald-400">
                         <span>Ver propuesta</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -198,9 +200,22 @@
                         <i data-lucide="zap" class="w-6 h-6"></i>
                     </div>
                     <span class="text-xs font-bold text-brand-cyan uppercase tracking-widest block mb-1">Rendir</span>
-                    <h3 class="text-2xl font-bold font-heading text-white uppercase">Soy Deportista</h3>
+                    <h3 class="text-xl font-bold font-heading text-white uppercase">Soy Deportista</h3>
                     <p class="text-xs text-brand-muted mt-2 leading-relaxed">Evaluación de fuerza, potencia, asimetrías y recovery para llevar tu rendimiento al siguiente nivel.</p>
                     <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-brand-cyan">
+                        <span>Ver propuesta</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </div>
+                </div>
+
+                <!-- QUIERO ENTRENAR (NUEVO PILAR) -->
+                <div onclick="switchTab('entrenar')" class="glass-panel p-6 rounded-2xl border border-gray-800 hover:border-indigo-500 cursor-pointer transition-all group hover:-translate-y-1 shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="dumbbell" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest block mb-1">Evolucionar</span>
+                    <h3 class="text-xl font-bold font-heading text-white uppercase">Quiero Entrenar</h3>
+                    <p class="text-xs text-brand-muted mt-2 leading-relaxed">Entrenamiento personalizado basado en datos y adaptado a tus metas particulares.</p>
+                    <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-400">
                         <span>Ver propuesta</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </div>
                 </div>
@@ -211,7 +226,7 @@
                         <i data-lucide="shield" class="w-6 h-6"></i>
                     </div>
                     <span class="text-xs font-bold text-blue-400 uppercase tracking-widest block mb-1">Optimizar</span>
-                    <h3 class="text-2xl font-bold font-heading text-white uppercase">Soy Club / Equipo</h3>
+                    <h3 class="text-xl font-bold font-heading text-white uppercase">Soy Club / Equipo</h3>
                     <p class="text-xs text-brand-muted mt-2 leading-relaxed">Evaluación de planteiles, pretemporadas y monitoreo con datos objetivos para cuerpos técnicos.</p>
                     <div class="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-400">
                         <span>Ver propuesta</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -230,18 +245,18 @@
                     Evaluación Deportiva <span class="text-brand-cyan">Basada en Datos</span>
                 </h2>
                 <p class="text-brand-muted">
-                    Utilizamos tecnología de valoración cuantitativa para identificar capacidades, déficits y asimetrías que no pueden detectarse a simple vista.
+                    Utilizamos tecnología de valoración cuantitativa para identificar capacidades, déficits y asimetrías que não pueden detectarse a simple vista.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Fuerza -->
+                <!-- Fuerza (Actualizado: solo fuerza isométrica) -->
                 <div class="glass-panel p-6 rounded-2xl glass-panel-hover">
                     <div class="w-10 h-10 rounded-lg bg-brand-cyan/10 text-brand-cyan flex items-center justify-center mb-4">
                         <i data-lucide="gauge" class="w-5 h-5"></i>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-1">Dinamometría</h3>
-                    <p class="text-xs text-brand-muted leading-relaxed">Medición precisa de picos de fuerza isométrica e excéntrica en Newtons.</p>
+                    <p class="text-xs text-brand-muted leading-relaxed">Medición precisa de la fuerza isométrica en Newtons.</p>
                 </div>
 
                 <!-- Potencia y Salto -->
@@ -366,22 +381,26 @@
         </div>
     </section>
 
-    <!-- SECCIÓN CONTENIDO DINÁMICO POR PÚBLICO (TABS PACIENTE / DEPORTISTA / CLUB) -->
+    <!-- SECCIÓN CONTENIDO DINÁMICO POR PÚBLICO (TABS PACIENTE / DEPORTISTA / ENTRENAR / CLUB) -->
     <section id="seccion-publicos" class="py-20 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- CONTROLES DE TABS -->
             <div class="flex justify-center mb-12">
-                <div class="inline-flex p-1.5 rounded-2xl glass-panel border border-gray-800 gap-2">
-                    <button onclick="switchTab('paciente')" id="tab-btn-paciente" class="tab-btn px-6 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all uppercase tracking-wider flex items-center gap-2">
+                <div class="inline-flex flex-wrap justify-center p-1.5 rounded-2xl glass-panel border border-gray-800 gap-2">
+                    <button onclick="switchTab('paciente')" id="tab-btn-paciente" class="tab-btn px-5 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all uppercase tracking-wider flex items-center gap-2">
                         <i data-lucide="heart-pulse" class="w-4 h-4"></i>
                         <span>Soy Paciente</span>
                     </button>
-                    <button onclick="switchTab('deportista')" id="tab-btn-deportista" class="tab-btn active px-6 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all uppercase tracking-wider flex items-center gap-2">
+                    <button onclick="switchTab('deportista')" id="tab-btn-deportista" class="tab-btn px-5 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all uppercase tracking-wider flex items-center gap-2">
                         <i data-lucide="zap" class="w-4 h-4"></i>
                         <span>Soy Deportista</span>
                     </button>
-                    <button onclick="switchTab('club')" id="tab-btn-club" class="tab-btn px-6 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all uppercase tracking-wider flex items-center gap-2">
+                    <button onclick="switchTab('entrenar')" id="tab-btn-entrenar" class="tab-btn active px-5 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all uppercase tracking-wider flex items-center gap-2">
+                        <i data-lucide="dumbbell" class="w-4 h-4"></i>
+                        <span>Quiero Entrenar</span>
+                    </button>
+                    <button onclick="switchTab('club')" id="tab-btn-club" class="tab-btn px-5 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all uppercase tracking-wider flex items-center gap-2">
                         <i data-lucide="shield" class="w-4 h-4"></i>
                         <span>Soy Club</span>
                     </button>
@@ -404,7 +423,7 @@
                     </div>
                     <div class="glass-panel p-5 rounded-xl border-l-4 border-l-emerald-400">
                         <span class="text-xs font-bold text-emerald-400 uppercase">02. TRATAR</span>
-                        <p class="text-xs text-brand-muted mt-1">Herramientas de fisioterapia y ejercicio de dosis exacta.</p>
+                        <p class="text-xs text-brand-muted mt-1">Herramientas de fisioterapia y ejercicios terapéuticos.</p>
                     </div>
                     <div class="glass-panel p-5 rounded-xl border-l-4 border-l-emerald-400">
                         <span class="text-xs font-bold text-emerald-400 uppercase">03. RECUPERAR</span>
@@ -440,7 +459,7 @@
             </div>
 
             <!-- CONTENIDO TAB 2: SOY DEPORTISTA -->
-            <div id="tab-deportista" class="tab-content space-y-12">
+            <div id="tab-deportista" class="tab-content hidden space-y-12">
                 <div class="text-center max-w-3xl mx-auto space-y-3">
                     <span class="text-brand-cyan font-semibold text-xs uppercase tracking-widest">Performance, Medición & Recovery</span>
                     <h2 class="text-3xl sm:text-5xl font-extrabold uppercase font-heading">Entrená. Medí. Recuperá. Rendí.</h2>
@@ -516,7 +535,73 @@
                 </div>
             </div>
 
-            <!-- CONTENIDO TAB 3: SOY CLUB -->
+            <!-- CONTENIDO TAB 3: QUIERO ENTRENAR (NUEVO) -->
+            <div id="tab-entrenar" class="tab-content space-y-12">
+                <div class="text-center max-w-3xl mx-auto space-y-3">
+                    <span class="text-indigo-400 font-semibold text-xs uppercase tracking-widest">Entrenamiento Personalizado</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold uppercase font-heading">Entrenamiento personalizado basado en datos, no entrenamos a todos igual</h2>
+                    <p class="text-brand-muted text-sm sm:text-base">Planes estructurados y específicos según tus capacidades y requerimientos individuales.</p>
+                </div>
+
+                <!-- Puntos clave del entrenamiento -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-indigo-400 space-y-2">
+                        <div class="flex items-center gap-2 text-indigo-400 font-bold text-sm uppercase">
+                            <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+                            <span>Evaluación Inicial</span>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Cada programa comienza con una evaluación de las capacidades físicas, limitaciones y objetivos de cada persona.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-indigo-400 space-y-2">
+                        <div class="flex items-center gap-2 text-indigo-400 font-bold text-sm uppercase">
+                            <i data-lucide="sliders" class="w-5 h-5"></i>
+                            <span>Diseño de Sesiones</span>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Diseñamos sesiones individuales de fuerza, potencia, movilidad, estabilidad y acondicionamiento físico, utilizando los resultados obtenidos en la evaluación para determinar las cargas y progresiones.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Dos enfoques de entrenamiento -->
+                <div class="grid md:grid-cols-2 gap-8 pt-4">
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-800 space-y-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center">
+                            <i data-lucide="trophy" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-heading text-white uppercase">Rendimiento Deportivo</h3>
+                        <p class="text-xs text-brand-muted">Enfoque específico orientado a disciplinas de alta exigencia:</p>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 bg-gray-900 border border-gray-800 rounded-full text-xs text-brand-cyan font-semibold">Fútbol</span>
+                            <span class="px-3 py-1 bg-gray-900 border border-gray-800 rounded-full text-xs text-brand-cyan font-semibold">Running</span>
+                            <span class="px-3 py-1 bg-gray-900 border border-gray-800 rounded-full text-xs text-brand-cyan font-semibold">Pádel</span>
+                            <span class="px-3 py-1 bg-gray-900 border border-gray-800 rounded-full text-xs text-brand-cyan font-semibold">Tenis</span>
+                            <span class="px-3 py-1 bg-gray-900 border border-gray-800 rounded-full text-xs text-brand-cyan font-semibold">Vóleibol</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel p-8 rounded-3xl border border-gray-800 space-y-4">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+                            <i data-lucide="heart" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-heading text-white uppercase">Entrenamiento Individual</h3>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Diseñado para personas que simplemente quieren ganar fuerza, mejorar condiciones físicas generales, prevenir lesiones, optimizar su salud y moverse con total confianza en su día a día.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center pt-6">
+                    <a href="#reserva" onclick="setServiceSelect('Entrenamiento Personalizado')" class="inline-flex items-center gap-2 px-8 py-3.5 bg-indigo-500 text-white font-bold rounded-xl hover:bg-indigo-600 transition-all text-sm uppercase tracking-wider">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> Consultar por Entrenamiento Personalizado
+                    </a>
+                </div>
+            </div>
+
+            <!-- CONTENIDO TAB 4: SOY CLUB -->
             <div id="tab-club" class="tab-content hidden space-y-12">
                 <div class="text-center max-w-3xl mx-auto space-y-3">
                     <span class="text-blue-400 font-semibold text-xs uppercase tracking-widest">Para Cuerpos Técnicos & Instituciones</span>
@@ -524,21 +609,33 @@
                     <p class="text-brand-muted text-sm sm:text-base">Incorporamos datos objetivos a los procesos de pretemporada, prevención y retorno deportivo de planteles profesionales.</p>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-blue-500">
-                        <h4 class="font-bold text-white text-lg mb-2">Evaluación de Pretemporada</h4>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-blue-500 space-y-3">
+                        <h4 class="font-bold text-white text-lg">Evaluación de Pretemporada</h4>
                         <p class="text-xs text-brand-muted leading-relaxed">Screening completo del plantel al inicio de temporada para establecer la línea de base individual y colectiva.</p>
                     </div>
 
-                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-blue-500">
-                        <h4 class="font-bold text-white text-lg mb-2">Monitoreo Periódico</h4>
+                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-blue-500 space-y-3">
+                        <h4 class="font-bold text-white text-lg">Monitoreo Periódico</h4>
                         <p class="text-xs text-brand-muted leading-relaxed">Evaluaciones programadas a lo largo del año para medir cambios en la fuerza y fatiga acumulada.</p>
                     </div>
 
-                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-blue-500">
-                        <h4 class="font-bold text-white text-lg mb-2">Return to Play & Informes</h4>
-                        <p class="text-xs text-brand-muted leading-relaxed">Reportes claros y visuales para el cuerpo técnico en la fase final de rehabilitación en campo.</p>
+                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-blue-500 space-y-3">
+                        <h4 class="font-bold text-white text-lg">Identificación de Factores de Riesgo</h4>
+                        <p class="text-xs text-brand-muted leading-relaxed">Identificamos jugadores con perfiles de mayor exposición a factores asociados al riesgo de lesión.</p>
                     </div>
+
+                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-blue-500 space-y-3">
+                        <h4 class="font-bold text-white text-lg">Screening de Riesgo & Perfil Individual</h4>
+                        <p class="text-xs text-brand-muted leading-relaxed">A partir de los resultados obtenidos construimos un perfil individual de cada jugador, identificando déficits, asimetrías, historial de lesiones previas y capacidades físicas que requieren especial atención.</p>
+                    </div>
+                </div>
+
+                <!-- Frase destacada club -->
+                <div class="glass-panel p-6 rounded-2xl border border-blue-500/40 bg-blue-500/5 text-center max-w-2xl mx-auto">
+                    <p class="text-sm font-semibold text-blue-300 italic">
+                        "No buscamos predecir quién se va a lesionar; buscamos detectar dónde debemos intervenir antes de que aparezca el problema."
+                    </p>
                 </div>
 
                 <div class="text-center pt-4">
@@ -614,6 +711,7 @@
                             <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Tipo de Solicitud *</label>
                             <select id="form-service" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-cyan">
                                 <option value="Evaluación / Deportista">Evaluación Deportiva (Deportista)</option>
+                                <option value="Entrenamiento Personalizado">Entrenamiento Personalizado</option>
                                 <option value="Fisioterapia / Paciente">Fisioterapia / Lesión (Paciente)</option>
                                 <option value="Recovery Post-Entreno">Sesión de Recovery</option>
                                 <option value="Propuesta para Club">Propuesta para Club / Equipo</option>
@@ -648,7 +746,7 @@
     <script>
         lucide.createIcons();
 
-        // Switch Tabs (Paciente, Deportista, Club)
+        // Switch Tabs (Paciente, Deportista, Entrenar, Club)
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
